@@ -43,14 +43,14 @@
 
 from random import randrange
 import pygame, sys
-import ai
+from copy import deepcopy
 
 # Config
 CELL_SIZE =	20
 COLS = 10
 ROWS = 22
 MAX_FPS = 30
-DROP_TIME = 100
+DROP_TIME = 1000
 
 COLORS = [
 	(0,   0,   0),
@@ -104,11 +104,12 @@ def remove_row(board, row):
 	board = [[0 for i in range(COLS)]] + board
 	
 def join_matrices(mat1, mat2, mat2_off):
+	mat3 = deepcopy(mat1)
 	off_x, off_y = mat2_off
 	for cy, row in enumerate(mat2):
 		for cx, val in enumerate(row):
-			mat1[cy+off_y-1][cx+off_x] += val
-	return mat1
+			mat3[cy+off_y-1][cx+off_x] += val
+	return mat3
 
 def new_board():
 	board = [[0 for x in range(COLS)] for y in range(ROWS)]
@@ -141,9 +142,11 @@ class TetrisApp(object):
 		if check_collision(self.board, self.stone, (self.stone_x, self.stone_y)):
 			self.gameover = True
 
-		ai.make_move(self)
+		self.ai.make_move()
 	
 	def init_game(self):
+		from ai import AI
+		self.ai = AI(self)
 		self.board = new_board()
 		self.score = 0
 		self.new_stone()
@@ -264,5 +267,5 @@ class TetrisApp(object):
 					
 			clock.tick(MAX_FPS)
 
-if __name__ == '__main__':
+if __name__ == "__main__":
 	TetrisApp().run()

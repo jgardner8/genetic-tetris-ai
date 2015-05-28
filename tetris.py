@@ -43,12 +43,14 @@
 
 from random import randrange
 import pygame, sys
+import ai
 
 # Config
 CELL_SIZE =	20
 COLS = 10
 ROWS = 22
 MAX_FPS = 30
+DROP_TIME = 100
 
 COLORS = [
 	(0,   0,   0),
@@ -118,6 +120,7 @@ class TetrisApp(object):
 		self.DROPEVENT = pygame.USEREVENT + 1
 
 		pygame.init()
+		pygame.display.set_caption("Tetris AI")
 		pygame.key.set_repeat(250,25)
 		self.width = CELL_SIZE * (COLS+5)
 		self.height = CELL_SIZE * ROWS
@@ -131,19 +134,20 @@ class TetrisApp(object):
 	
 	def new_stone(self):
 		self.stone = self.next_stone
-		print(self.stone)
 		self.next_stone = TETROMINOS[randrange(len(TETROMINOS))]
 		self.stone_x = COLS//2 - len(self.stone[0])//2
 		self.stone_y = 0
 		
 		if check_collision(self.board, self.stone, (self.stone_x, self.stone_y)):
 			self.gameover = True
+
+		ai.make_move(self)
 	
 	def init_game(self):
 		self.board = new_board()
 		self.score = 0
 		self.new_stone()
-		pygame.time.set_timer(self.DROPEVENT, 1000)
+		pygame.time.set_timer(self.DROPEVENT, DROP_TIME)
 	
 	def disp_msg(self, msg, topleft):
 		x,y = topleft
@@ -193,7 +197,7 @@ class TetrisApp(object):
 		if not self.gameover:
 			self.stone_y += 1
 			if check_collision(self.board, self.stone, (self.stone_x, self.stone_y)):
-				self.board = join_matrices(self.board,self.stone, (self.stone_x, self.stone_y))
+				self.board = join_matrices(self.board, self.stone, (self.stone_x, self.stone_y))
 				self.new_stone()
 				cleared_rows = 0
 				for i, row in enumerate(self.board[:-1]):
@@ -232,7 +236,7 @@ class TetrisApp(object):
 			'RETURN': self.insta_drop
 		}
 		
-		dont_burn_my_cpu = pygame.time.Clock()
+		clock = pygame.time.Clock()
 		while True:
 			self.screen.fill((0,0,0))
 			if self.gameover:
@@ -258,7 +262,7 @@ class TetrisApp(object):
 						if event.key == eval("pygame.K_" + key):
 							key_actions[key]()
 					
-			dont_burn_my_cpu.tick(MAX_FPS)
+			clock.tick(MAX_FPS)
 
 if __name__ == '__main__':
 	TetrisApp().run()

@@ -8,13 +8,14 @@ class AI(object):
 	def __init__(self, tetris):
 		self.tetris = tetris
 		self.heuristics = {
-			heuristic.num_holes: -8,
+			heuristic.num_holes: -15,
 			heuristic.num_blocks_above_holes: -5,
 			heuristic.num_gaps: -5,
 			heuristic.max_height: -6,
 			heuristic.avg_height: -4,
 			heuristic.num_blocks: -15,
 		}
+		self.instant_play = False
 
 	def board_with_stone(self, x, y, stone):
 		"""Return new board with stone included"""
@@ -26,7 +27,7 @@ class AI(object):
 		y = 0
 		while not check_collision(tetris.board, stone, (x, y)):
 			y += 1
-		return y
+		return y - 1
 
 	@staticmethod
 	def max_x_pos_for_stone(stone):
@@ -43,15 +44,8 @@ class AI(object):
 				return len(stones)
 			stones.append(stone)
 
-	@staticmethod
-	def utility(board, heuristics):
-		"""heuristics is a dictionary containing function/weight pairs.
-		e.g. heuristic_weights = {
-			holes_in_board: -0.5,
-			avg_height: -2,
-		} 
-		"""
-		return sum([fun(board)*weight for (fun, weight) in heuristics.items()])
+	def utility(self, board):
+		return sum([fun(board)*weight for (fun, weight) in self.heuristics.items()])
 
 	def all_possible_moves(self):
 		moves = []
@@ -65,7 +59,7 @@ class AI(object):
 		return moves		
 
 	def best_move(self):
-		return max(self.all_possible_moves(), key=lambda m: AI.utility(m.result, self.heuristics))		
+		return max(self.all_possible_moves(), key=lambda m: self.utility(m.result))		
 
 	def make_move(self):
 		"""Move the current stone to the desired position by modifying TetrisApp's state"""
@@ -75,4 +69,6 @@ class AI(object):
 		for _ in range(move.rotation):
 			tetris.stone = rotate_clockwise(tetris.stone)
 		tetris.move_to(move.x_pos)
-		# tetris.insta_drop()
+		
+		if self.instant_play:
+			tetris.stone_y = self.intersection_point(move.x_pos, tetris.stone) - 1

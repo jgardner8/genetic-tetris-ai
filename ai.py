@@ -1,9 +1,20 @@
 from tetris import check_collision, COLS, join_matrices, rotate_clockwise
 import heuristic
+from collections import namedtuple
+
+Move = namedtuple('Move', ['x_pos', 'rotation', 'result'])
 
 class AI(object):
 	def __init__(self, tetris):
 		self.tetris = tetris
+		self.heuristics = {
+			heuristic.num_holes: -8,
+			heuristic.num_blocks_above_holes: -5,
+			heuristic.num_gaps: -5,
+			heuristic.max_height: -6,
+			heuristic.avg_height: -4,
+			heuristic.num_blocks: -15,
+		}
 
 	def board_with_stone(self, x, y, stone):
 		"""Return new board with stone included"""
@@ -42,32 +53,26 @@ class AI(object):
 		"""
 		return sum([fun(board)*weight for (fun, weight) in heuristics.items()])
 
-	def make_move(self):
-		"""Move the current stone to the desired position by modifying TetrisApp's state"""
-		tetris = self.tetris
-		heuristics = {
-			heuristic.num_holes: -8,
-			heuristic.num_blocks_above_holes: -5,
-			heuristic.num_gaps: -5,
-			heuristic.max_height: -6,
-			heuristic.avg_height: -4,
-			heuristic.num_blocks: -15,
-		}
-
-		# TODO: extend this to make two moves
+	def all_possible_moves(self):
 		moves = []
-		stone = tetris.stone
-		for r in range(AI.num_rotations(tetris.stone)):
+		stone = self.tetris.stone
+		for r in range(AI.num_rotations(stone)):
 			for x in range(self.max_x_pos_for_stone(stone)+1):
 				y = self.intersection_point(x, stone)
 				board = self.board_with_stone(x, y, stone)
-				moves.append( (x, r, board) )
+				moves.append(Move(x, r, board))
 			stone = rotate_clockwise(stone)
-		best_move = max(moves, key=lambda m: AI.utility(m[2], heuristics))
-		
-		# Perhaps this should be a class
-		x, r, board = best_move
-		for _ in range(r):
+		return moves		
+
+	def best_move(self):
+		return max(self.all_possible_moves(), key=lambda m: AI.utility(m.result, self.heuristics))		
+
+	def make_move(self):
+		"""Move the current stone to the desired position by modifying TetrisApp's state"""
+		tetris = self.tetris
+
+		move = self.best_move()
+		for _ in range(move.rotation):
 			tetris.stone = rotate_clockwise(tetris.stone)
-		tetris.move_to(x)
+		tetris.move_to(move.x_pos)
 		# tetris.insta_drop()

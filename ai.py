@@ -1,6 +1,5 @@
-from random import randrange
 from tetris import check_collision, COLS, join_matrices, rotate_clockwise
-# from copy import copy, deepcopy
+import heuristic
 
 class AI(object):
 	def __init__(self, tetris):
@@ -34,23 +33,37 @@ class AI(object):
 			stones.append(stone)
 
 	@staticmethod
-	def board_utility(board):
-		return randrange(100)
+	def utility(board, heuristics):
+		"""heuristics is a dictionary containing function/weight pairs.
+		e.g. heuristic_weights = {
+			holes_in_board: -0.5,
+			avg_height: -2,
+		} 
+		"""
+		return sum([fun(board)*weight for (fun, weight) in heuristics.items()])
 
 	def make_move(self):
 		"""Move the current stone to the desired position by modifying TetrisApp's state"""
 		tetris = self.tetris
+		heuristics = {
+			heuristic.num_holes: -8,
+			heuristic.num_blocks_above_holes: -5,
+			heuristic.num_gaps: -5,
+			heuristic.max_height: -6,
+			heuristic.avg_height: -4,
+			heuristic.num_blocks: -15,
+		}
 
 		# TODO: extend this to make two moves
 		moves = []
 		stone = tetris.stone
 		for r in range(AI.num_rotations(tetris.stone)):
-			for x in range(self.max_x_pos_for_stone(stone) + 1):
+			for x in range(self.max_x_pos_for_stone(stone)+1):
 				y = self.intersection_point(x, stone)
 				board = self.board_with_stone(x, y, stone)
 				moves.append( (x, r, board) )
 			stone = rotate_clockwise(stone)
-		best_move = max(moves, key=lambda move: AI.board_utility(move[2]))
+		best_move = max(moves, key=lambda m: AI.utility(m[2], heuristics))
 		
 		# Perhaps this should be a class
 		x, r, board = best_move

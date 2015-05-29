@@ -8,12 +8,12 @@ class AI(object):
 	def __init__(self, tetris):
 		self.tetris = tetris
 		self.heuristics = {
-			heuristic.num_holes: -15,
-			heuristic.num_blocks_above_holes: -5,
-			heuristic.num_gaps: -5,
-			heuristic.max_height: -6,
-			heuristic.avg_height: -4,
-			heuristic.num_blocks: -15,
+			heuristic.num_holes: -593,
+			heuristic.num_blocks_above_holes: 636,
+			heuristic.num_gaps: -94,
+			heuristic.max_height: -783,
+			heuristic.avg_height: -447,
+			heuristic.num_blocks: 345,
 		}
 		self.instant_play = False
 
@@ -66,9 +66,11 @@ class AI(object):
 		tetris = self.tetris
 
 		move = self.best_move()
+
+		tetris.lock.acquire()
 		for _ in range(move.rotation):
 			tetris.stone = rotate_clockwise(tetris.stone)
-		tetris.move_to(move.x_pos)
-		
+		tetris.move_to(move.x_pos)		
 		if self.instant_play:
-			tetris.stone_y = self.intersection_point(move.x_pos, tetris.stone) - 1
+			tetris.stone_y = self.intersection_point(move.x_pos, tetris.stone)
+		tetris.lock.release()

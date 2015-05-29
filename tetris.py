@@ -44,13 +44,14 @@
 from random import randrange
 import pygame, sys
 from copy import deepcopy
+from threading import Lock
 
 # Config
 CELL_SIZE =	20
 COLS = 10
 ROWS = 22
 MAX_FPS = 30
-DROP_TIME = 1
+DROP_TIME = 10
 
 COLORS = [
 	(0,   0,   0),
@@ -136,6 +137,7 @@ class TetrisApp(object):
 		self.gameover = False
 		self.runner = runner
 		self.ai = None
+		self.lock = Lock()
 		self.init_game()
 	
 	def new_stone(self):
@@ -150,10 +152,9 @@ class TetrisApp(object):
 			if self.runner:
 				self.runner.on_game_over(self.score)
 
-		if self.ai:
-			self.ai.make_move()
-	
 	def init_game(self):
+		from ai import AI
+		self.ai = AI(self)
 		self.board = new_board()
 		self.score = 0
 		self.new_stone()
@@ -187,7 +188,7 @@ class TetrisApp(object):
 						pygame.draw.rect(self.screen, COLORS[val], 
 							pygame.Rect((off_x+x)*CELL_SIZE, (off_y+y)*CELL_SIZE, CELL_SIZE, CELL_SIZE), 0)
 					except IndexError:
-						print("Corrupted board") # TODO: fix this
+						print("Corrupted board") # TODO: pretty sure this is now fixed.
 						print(self.board)
 	
 	def add_cl_lines(self, n):
@@ -208,6 +209,7 @@ class TetrisApp(object):
 				self.stone_x = new_x
 	
 	def drop(self):
+		self.lock.acquire()
 		if not self.gameover:
 			self.stone_y += 1
 			if check_collision(self.board, self.stone, (self.stone_x, self.stone_y)):
@@ -219,7 +221,13 @@ class TetrisApp(object):
 						self.board = remove_row(self.board, i)
 						cleared_rows += 1
 				self.add_cl_lines(cleared_rows)
+
+				self.lock.release()				
+				if self.ai:
+					self.ai.make_move()
+
 				return True
+		self.lock.release()
 		return False
 	
 	def insta_drop(self):
@@ -254,7 +262,7 @@ class TetrisApp(object):
 			'p': self.ai_toggle_instant_play,
 		}
 		
-		#clock = pygame.time.Clock()
+		clock = pygame.time.Clock()
 		while True:
 			self.screen.fill((0,0,0))
 			if self.gameover:
@@ -264,10 +272,11 @@ class TetrisApp(object):
 					(self.rlim+1, 0), (self.rlim+1, self.height-1))
 				self.disp_msg("Next:", (self.rlim+CELL_SIZE, 2))
 				self.disp_msg("Score: %d" % self.score, (self.rlim+CELL_SIZE, CELL_SIZE*5))
-				if self.ai:
+				if self.ai and self.runner:
 					from heuristic import num_holes, num_blocks_above_holes, num_gaps, max_height, avg_height, num_blocks
 					chromosome = self.runner.population[self.runner.current_chromosome]
 					self.disp_msg("Discontent:\n   %d" % -self.ai.utility(self.board), (self.rlim+CELL_SIZE, CELL_SIZE*10))
+					self.disp_msg("Generation: %s" % self.runner.current_generation, (self.rlim+CELL_SIZE, CELL_SIZE*12))
 					self.disp_msg("Chromosome: %d" % chromosome.name, (self.rlim+CELL_SIZE, CELL_SIZE*13))
 					self.disp_msg("\n  %s: %s\n  %s: %s\n  %s: %s\n  %s: %s\n  %s: %s\n  %s: %s" % (
 						"num_holes", chromosome.heuristics[num_holes],
@@ -293,7 +302,7 @@ class TetrisApp(object):
 						if event.key == eval("pygame.K_" + key):
 							key_actions[key]()
 					
-			#clock.tick(MAX_FPS)
+			clock.tick(MAX_FPS)
 
 if __name__ == "__main__":
 	TetrisApp().run()

@@ -50,7 +50,7 @@ CELL_SIZE =	20
 COLS = 10
 ROWS = 22
 MAX_FPS = 30
-DROP_TIME = 1000
+DROP_TIME = 10
 
 COLORS = [
 	(0,   0,   0),
@@ -95,13 +95,16 @@ def check_collision(board, shape, offset):
 	off_x, off_y = offset
 	for cy, row in enumerate(shape):
 		for cx, cell in enumerate(row):
-			if cell and board[cy + off_y][cx + off_x]:
+			try:
+				if cell and board[cy + off_y][cx + off_x]:
+					return True
+			except IndexError:
 				return True
 	return False
 
 def remove_row(board, row):
 	del board[row]
-	board = [[0 for i in range(COLS)]] + board
+	return [[0 for i in range(COLS)]] + board
 	
 def join_matrices(mat1, mat2, mat2_off):
 	mat3 = deepcopy(mat1)
@@ -205,7 +208,7 @@ class TetrisApp(object):
 				cleared_rows = 0
 				for i, row in enumerate(self.board[:-1]):
 					if 0 not in row:
-						remove_row(self.board, i)
+						self.board = remove_row(self.board, i)
 						cleared_rows += 1
 						break
 				self.add_cl_lines(cleared_rows)

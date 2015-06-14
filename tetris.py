@@ -51,7 +51,8 @@ CELL_SIZE =	20
 COLS = 10
 ROWS = 22
 MAX_FPS = 30
-DROP_TIME = 10
+DROP_TIME = 20
+DRAW = True
 
 COLORS = [
 	(0,   0,   0),
@@ -153,8 +154,6 @@ class TetrisApp(object):
 				self.runner.on_game_over(self.score)
 
 	def init_game(self):
-		from ai import AI
-		self.ai = AI(self)
 		self.board = new_board()
 		self.score = 0
 		self.new_stone()
@@ -264,33 +263,34 @@ class TetrisApp(object):
 		
 		clock = pygame.time.Clock()
 		while True:
-			self.screen.fill((0,0,0))
-			if self.gameover:
-				self.center_msg("Game Over!\nYour score: %d\nPress space to continue" % self.score)
-			else:
-				pygame.draw.line(self.screen, (255,255,255), 
-					(self.rlim+1, 0), (self.rlim+1, self.height-1))
-				self.disp_msg("Next:", (self.rlim+CELL_SIZE, 2))
-				self.disp_msg("Score: %d" % self.score, (self.rlim+CELL_SIZE, CELL_SIZE*5))
-				if self.ai and self.runner:
-					from heuristic import num_holes, num_blocks_above_holes, num_gaps, max_height, avg_height, num_blocks
-					chromosome = self.runner.population[self.runner.current_chromosome]
-					self.disp_msg("Discontent:\n   %d" % -self.ai.utility(self.board), (self.rlim+CELL_SIZE, CELL_SIZE*10))
-					self.disp_msg("Generation: %s" % self.runner.current_generation, (self.rlim+CELL_SIZE, CELL_SIZE*12))
-					self.disp_msg("Chromosome: %d" % chromosome.name, (self.rlim+CELL_SIZE, CELL_SIZE*13))
-					self.disp_msg("\n  %s: %s\n  %s: %s\n  %s: %s\n  %s: %s\n  %s: %s\n  %s: %s" % (
-						"num_holes", chromosome.heuristics[num_holes],
-						"num_blocks_above_holes", chromosome.heuristics[num_blocks_above_holes],
-						"num_gaps", chromosome.heuristics[num_gaps],
-						"max_height", chromosome.heuristics[max_height],
-						"avg_height", chromosome.heuristics[avg_height],
-						"num_blocks", chromosome.heuristics[num_blocks],
-					), (self.rlim+CELL_SIZE, CELL_SIZE*13.1))
-				self.draw_matrix(self.bground_grid, (0,0))
-				self.draw_matrix(self.board, (0,0))
-				self.draw_matrix(self.stone, (self.stone_x, self.stone_y))
-				self.draw_matrix(self.next_stone, (COLS+1,2))
-			pygame.display.update()
+			if DRAW:
+				self.screen.fill((0,0,0))
+				if self.gameover:
+					self.center_msg("Game Over!\nYour score: %d\nPress space to continue" % self.score)
+				else:
+					pygame.draw.line(self.screen, (255,255,255), 
+						(self.rlim+1, 0), (self.rlim+1, self.height-1))
+					self.disp_msg("Next:", (self.rlim+CELL_SIZE, 2))
+					self.disp_msg("Score: %d" % self.score, (self.rlim+CELL_SIZE, CELL_SIZE*5))
+					if self.ai and self.runner:
+						from heuristic import num_holes, num_blocks_above_holes, num_gaps, max_height, avg_height, num_blocks
+						chromosome = self.runner.population[self.runner.current_chromosome]
+						self.disp_msg("Discontentment: %d" % -self.ai.utility(self.board), (self.rlim+CELL_SIZE, CELL_SIZE*10))
+						self.disp_msg("Generation: %s" % self.runner.current_generation, (self.rlim+CELL_SIZE, CELL_SIZE*11))
+						self.disp_msg("Chromosome: %d" % chromosome.name, (self.rlim+CELL_SIZE, CELL_SIZE*12))
+						self.disp_msg("\n  %s: %s\n  %s: %s\n  %s: %s\n  %s: %s\n  %s: %s\n  %s: %s" % (
+							"num_holes", chromosome.heuristics[num_holes],
+							"num_blocks_above_holes", chromosome.heuristics[num_blocks_above_holes],
+							"num_gaps", chromosome.heuristics[num_gaps],
+							"max_height", chromosome.heuristics[max_height],
+							"avg_height", chromosome.heuristics[avg_height],
+							"num_blocks", chromosome.heuristics[num_blocks],
+						), (self.rlim+CELL_SIZE, CELL_SIZE*12.1))
+					self.draw_matrix(self.bground_grid, (0,0))
+					self.draw_matrix(self.board, (0,0))
+					self.draw_matrix(self.stone, (self.stone_x, self.stone_y))
+					self.draw_matrix(self.next_stone, (COLS+1,2))
+				pygame.display.update()
 			
 			for event in pygame.event.get():
 				if event.type == self.DROPEVENT:
@@ -305,4 +305,8 @@ class TetrisApp(object):
 			clock.tick(MAX_FPS)
 
 if __name__ == "__main__":
-	TetrisApp().run()
+	from ai import AI
+	app = TetrisApp()
+	app.ai = AI(app)
+	app.ai.instant_play = False
+	app.run()

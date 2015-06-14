@@ -3,6 +3,7 @@ from heuristic import *
 
 class TestHeuristics(unittest.TestCase):
 	def setUp(self):
+		# See doc/test_board.png for a clearer version of this board.
 		self.board = [
 			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 			[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],

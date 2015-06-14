@@ -8,14 +8,14 @@ class AI(object):
 	def __init__(self, tetris):
 		self.tetris = tetris
 		self.heuristics = {
-			heuristic.num_holes: -593,
-			heuristic.num_blocks_above_holes: 636,
-			heuristic.num_gaps: -94,
-			heuristic.max_height: -783,
-			heuristic.avg_height: -447,
-			heuristic.num_blocks: 345,
+			heuristic.num_holes: -496,
+			heuristic.num_blocks_above_holes: 897,
+			heuristic.num_gaps: -19,
+			heuristic.max_height: -910,
+			heuristic.avg_height: -747,
+			heuristic.num_blocks: 174,
 		}
-		self.instant_play = False
+		self.instant_play = True
 
 	def board_with_stone(self, x, y, stone):
 		"""Return new board with stone included"""
@@ -23,9 +23,8 @@ class AI(object):
 
 	def intersection_point(self, x, stone):
 		"""Find the y coordinate closest to the top where stone will collide"""
-		tetris = self.tetris
 		y = 0
-		while not check_collision(tetris.board, stone, (x, y)):
+		while not check_collision(self.tetris.board, stone, (x, y)):
 			y += 1
 		return y - 1
 

@@ -1,0 +1,1 @@
+Requires pygame, which isn't on pip: https://bitbucket.org/pygame/pygame/downloads

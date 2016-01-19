@@ -1,0 +1,1113 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>body {
+  width: 45em;
+  border: 1px solid #ddd;
+  outline: 1300px solid #fff;
+  margin: 16px auto;
+}
+
+body .markdown-body
+{
+  padding: 30px;
+}
+
+@font-face {
+  font-family: octicons-anchor;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+.markdown-body {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: #333;
+  overflow: hidden;
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.markdown-body a {
+  background: transparent;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline: 0;
+}
+
+.markdown-body strong {
+  font-weight: bold;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+.markdown-body img {
+  border: 0;
+}
+
+.markdown-body hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+.markdown-body pre {
+  overflow: auto;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+.markdown-body input {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+.markdown-body html input[disabled] {
+  cursor: default;
+}
+
+.markdown-body input {
+  line-height: normal;
+}
+
+.markdown-body input[type="checkbox"] {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body * {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body input {
+  font: 13px/1.4 Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.markdown-body a {
+  color: #4183c4;
+  text-decoration: none;
+}
+
+.markdown-body a:hover,
+.markdown-body a:focus,
+.markdown-body a:active {
+  text-decoration: underline;
+}
+
+.markdown-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.markdown-body hr:before {
+  display: table;
+  content: "";
+}
+
+.markdown-body hr:after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  line-height: 1.1;
+}
+
+.markdown-body h1 {
+  font-size: 30px;
+}
+
+.markdown-body h2 {
+  font-size: 21px;
+}
+
+.markdown-body h3 {
+  font-size: 16px;
+}
+
+.markdown-body h4 {
+  font-size: 14px;
+}
+
+.markdown-body h5 {
+  font-size: 12px;
+}
+
+.markdown-body h6 {
+  font-size: 11px;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ul ul ol,
+.markdown-body ul ol ol,
+.markdown-body ol ul ol,
+.markdown-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body code {
+  font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+  font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+.markdown-body .octicon {
+  font: normal normal 16px octicons-anchor;
+  line-height: 1;
+  display: inline-block;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.markdown-body .octicon-link:before {
+  content: '\f05c';
+}
+
+.markdown-body>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+.markdown-body .anchor {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  padding-right: 6px;
+  padding-left: 30px;
+  margin-left: -30px;
+}
+
+.markdown-body .anchor:focus {
+  outline: none;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  position: relative;
+  margin-top: 1em;
+  margin-bottom: 16px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.markdown-body h1 .octicon-link,
+.markdown-body h2 .octicon-link,
+.markdown-body h3 .octicon-link,
+.markdown-body h4 .octicon-link,
+.markdown-body h5 .octicon-link,
+.markdown-body h6 .octicon-link {
+  display: none;
+  color: #000;
+  vertical-align: middle;
+}
+
+.markdown-body h1:hover .anchor,
+.markdown-body h2:hover .anchor,
+.markdown-body h3:hover .anchor,
+.markdown-body h4:hover .anchor,
+.markdown-body h5:hover .anchor,
+.markdown-body h6:hover .anchor {
+  padding-left: 8px;
+  margin-left: -30px;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.markdown-body h1:hover .anchor .octicon-link,
+.markdown-body h2:hover .anchor .octicon-link,
+.markdown-body h3:hover .anchor .octicon-link,
+.markdown-body h4:hover .anchor .octicon-link,
+.markdown-body h5:hover .anchor .octicon-link,
+.markdown-body h6:hover .anchor .octicon-link {
+  display: inline-block;
+}
+
+.markdown-body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+
+.markdown-body h4 {
+  font-size: 1.25em;
+}
+
+.markdown-body h5 {
+  font-size: 1em;
+}
+
+.markdown-body h6 {
+  font-size: 1em;
+  color: #777;
+}
+
+.markdown-body p,
+.markdown-body blockquote,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body dl,
+.markdown-body table,
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 2em;
+}
+
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ol,
+.markdown-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markdown-body blockquote {
+  padding: 0 15px;
+  color: #777;
+  border-left: 4px solid #ddd;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+
+.markdown-body table th {
+  font-weight: bold;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid #ddd;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body code {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(0,0,0,0.04);
+  border-radius: 3px;
+}
+
+.markdown-body code:before,
+.markdown-body code:after {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+
+.markdown-body pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.markdown-body .highlight {
+  margin-bottom: 16px;
+}
+
+.markdown-body .highlight pre,
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+
+.markdown-body .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body pre {
+  word-wrap: normal;
+}
+
+.markdown-body pre code {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+.markdown-body pre code:before,
+.markdown-body pre code:after {
+  content: normal;
+}
+
+.markdown-body .highlight {
+  background: #fff;
+}
+
+.markdown-body .highlight .h {
+  color: #333;
+  font-style: normal;
+  font-weight: normal;
+}
+
+.markdown-body .highlight .mf,
+.markdown-body .highlight .mh,
+.markdown-body .highlight .mi,
+.markdown-body .highlight .mo,
+.markdown-body .highlight .il,
+.markdown-body .highlight .m {
+  color: #945277;
+}
+
+.markdown-body .highlight .s,
+.markdown-body .highlight .sb,
+.markdown-body .highlight .sc,
+.markdown-body .highlight .sd,
+.markdown-body .highlight .s2,
+.markdown-body .highlight .se,
+.markdown-body .highlight .sh,
+.markdown-body .highlight .si,
+.markdown-body .highlight .sx,
+.markdown-body .highlight .s1 {
+  color: #df5000;
+}
+
+.markdown-body .highlight .kc,
+.markdown-body .highlight .kd,
+.markdown-body .highlight .kn,
+.markdown-body .highlight .kp,
+.markdown-body .highlight .kr,
+.markdown-body .highlight .kt,
+.markdown-body .highlight .k,
+.markdown-body .highlight .o {
+  font-weight: bold;
+}
+
+.markdown-body .highlight .kt {
+  color: #458;
+}
+
+.markdown-body .highlight .c,
+.markdown-body .highlight .cm,
+.markdown-body .highlight .c1 {
+  color: #998;
+  font-style: italic;
+}
+
+.markdown-body .highlight .cp,
+.markdown-body .highlight .cs,
+.markdown-body .highlight .cp .h {
+  color: #999;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .cs {
+  font-style: italic;
+}
+
+.markdown-body .highlight .n {
+  color: #333;
+}
+
+.markdown-body .highlight .na,
+.markdown-body .highlight .nv,
+.markdown-body .highlight .vc,
+.markdown-body .highlight .vg,
+.markdown-body .highlight .vi {
+  color: #008080;
+}
+
+.markdown-body .highlight .nb {
+  color: #0086B3;
+}
+
+.markdown-body .highlight .nc {
+  color: #458;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .no {
+  color: #094e99;
+}
+
+.markdown-body .highlight .ni {
+  color: #800080;
+}
+
+.markdown-body .highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .nf {
+  color: #945277;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .nn {
+  color: #555;
+}
+
+.markdown-body .highlight .nt {
+  color: #000080;
+}
+
+.markdown-body .highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+
+.markdown-body .highlight .gd {
+  color: #000;
+  background-color: #fdd;
+}
+
+.markdown-body .highlight .gd .x {
+  color: #000;
+  background-color: #faa;
+}
+
+.markdown-body .highlight .ge {
+  font-style: italic;
+}
+
+.markdown-body .highlight .gr {
+  color: #aa0000;
+}
+
+.markdown-body .highlight .gh {
+  color: #999;
+}
+
+.markdown-body .highlight .gi {
+  color: #000;
+  background-color: #dfd;
+}
+
+.markdown-body .highlight .gi .x {
+  color: #000;
+  background-color: #afa;
+}
+
+.markdown-body .highlight .go {
+  color: #888;
+}
+
+.markdown-body .highlight .gp {
+  color: #555;
+}
+
+.markdown-body .highlight .gs {
+  font-weight: bold;
+}
+
+.markdown-body .highlight .gu {
+  color: #800080;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .gt {
+  color: #aa0000;
+}
+
+.markdown-body .highlight .ow {
+  font-weight: bold;
+}
+
+.markdown-body .highlight .w {
+  color: #bbb;
+}
+
+.markdown-body .highlight .sr {
+  color: #017936;
+}
+
+.markdown-body .highlight .ss {
+  color: #8b467f;
+}
+
+.markdown-body .highlight .bp {
+  color: #999;
+}
+
+.markdown-body .highlight .gc {
+  color: #999;
+  background-color: #EAF2F5;
+}
+
+.markdown-body kbd {
+  background-color: #e7e7e7;
+  background-image: -webkit-linear-gradient(#fefefe, #e7e7e7);
+  background-image: linear-gradient(#fefefe, #e7e7e7);
+  background-repeat: repeat-x;
+  display: inline-block;
+  padding: 3px 5px;
+  font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  line-height: 10px;
+  color: #000;
+  border: 1px solid #cfcfcf;
+  border-radius: 2px;
+}
+
+.markdown-body .highlight .pl-coc,
+.markdown-body .highlight .pl-entm,
+.markdown-body .highlight .pl-eoa,
+.markdown-body .highlight .pl-mai .pl-sf,
+.markdown-body .highlight .pl-pdv,
+.markdown-body .highlight .pl-sc,
+.markdown-body .highlight .pl-sr,
+.markdown-body .highlight .pl-v,
+.markdown-body .highlight .pl-vpf {
+  color: #0086b3;
+}
+
+.markdown-body .highlight .pl-eoac,
+.markdown-body .highlight .pl-mdht,
+.markdown-body .highlight .pl-mi1,
+.markdown-body .highlight .pl-mri,
+.markdown-body .highlight .pl-va,
+.markdown-body .highlight .pl-vpu {
+  color: #008080;
+}
+
+.markdown-body .highlight .pl-c,
+.markdown-body .highlight .pl-pdc {
+  color: #b4b7b4;
+  font-style: italic;
+}
+
+.markdown-body .highlight .pl-k,
+.markdown-body .highlight .pl-ko,
+.markdown-body .highlight .pl-kolp,
+.markdown-body .highlight .pl-mc,
+.markdown-body .highlight .pl-mr,
+.markdown-body .highlight .pl-ms,
+.markdown-body .highlight .pl-s,
+.markdown-body .highlight .pl-sok,
+.markdown-body .highlight .pl-st {
+  color: #6e5494;
+}
+
+.markdown-body .highlight .pl-ef,
+.markdown-body .highlight .pl-enf,
+.markdown-body .highlight .pl-enm,
+.markdown-body .highlight .pl-entc,
+.markdown-body .highlight .pl-eoi,
+.markdown-body .highlight .pl-sf,
+.markdown-body .highlight .pl-smc {
+  color: #d12089;
+}
+
+.markdown-body .highlight .pl-ens,
+.markdown-body .highlight .pl-eoai,
+.markdown-body .highlight .pl-kos,
+.markdown-body .highlight .pl-mh .pl-pdh,
+.markdown-body .highlight .pl-mp,
+.markdown-body .highlight .pl-pde,
+.markdown-body .highlight .pl-stp {
+  color: #458;
+}
+
+.markdown-body .highlight .pl-enti {
+  color: #d12089;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .pl-cce,
+.markdown-body .highlight .pl-enc,
+.markdown-body .highlight .pl-kou,
+.markdown-body .highlight .pl-mq {
+  color: #f93;
+}
+
+.markdown-body .highlight .pl-mp1 .pl-sf {
+  color: #458;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .pl-cos,
+.markdown-body .highlight .pl-ent,
+.markdown-body .highlight .pl-md,
+.markdown-body .highlight .pl-mdhf,
+.markdown-body .highlight .pl-ml,
+.markdown-body .highlight .pl-pdc1,
+.markdown-body .highlight .pl-pds,
+.markdown-body .highlight .pl-s1,
+.markdown-body .highlight .pl-scp,
+.markdown-body .highlight .pl-sol {
+  color: #df5000;
+}
+
+.markdown-body .highlight .pl-c1,
+.markdown-body .highlight .pl-cn,
+.markdown-body .highlight .pl-pse,
+.markdown-body .highlight .pl-pse .pl-s2,
+.markdown-body .highlight .pl-vi {
+  color: #a31515;
+}
+
+.markdown-body .highlight .pl-mb,
+.markdown-body .highlight .pl-pdb {
+  color: #df5000;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .pl-mi,
+.markdown-body .highlight .pl-pdi {
+  color: #6e5494;
+  font-style: italic;
+}
+
+.markdown-body .highlight .pl-ms1 {
+  background-color: #f5f5f5;
+}
+
+.markdown-body .highlight .pl-mdh,
+.markdown-body .highlight .pl-mdi {
+  font-weight: bold;
+}
+
+.markdown-body .highlight .pl-mdr {
+  color: #0086b3;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .pl-s2 {
+  color: #333;
+}
+
+.markdown-body .highlight .pl-ii {
+  background-color: #df5000;
+  color: #fff;
+}
+
+.markdown-body .highlight .pl-ib {
+  background-color: #f93;
+}
+
+.markdown-body .highlight .pl-id {
+  background-color: #a31515;
+  color: #fff;
+}
+
+.markdown-body .highlight .pl-iu {
+  background-color: #b4b7b4;
+}
+
+.markdown-body .highlight .pl-mo {
+  color: #969896;
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item input {
+  float: left;
+  margin: 0.3em 0 0.25em -1.6em;
+  vertical-align: middle;
+}</style><style>body {
+	width: 800px;
+}
+
+.markdown-body {
+	font-size: 9pt;
+}</style><title>tetris_ai_doc</title></head><body><article class="markdown-body"><h2>
+<a id="user-content-tetris-ai-documentation" class="anchor" href="#tetris-ai-documentation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Tetris AI Documentation</h2>
+
+<h2>
+<a id="user-content-introduction" class="anchor" href="#introduction" aria-hidden="true"><span class="octicon octicon-link"></span></a>Introduction</h2>
+
+<p>It is hard to determine how to create a Tetris AI, as I don't have any idea how to play the game well myself, and every move is highly situationally dependent. A rule-based script would be a complete dead end. My strategy is simply to try every combination of the current piece on the game board and use the one that produces the highest utility. The utility would be calculated by combining some weighted heuristics. The heuristics would include things such as stacking blocks too high, -40 utility; left a gap in blocks, -20 utility; cleared a row, +50 utility.</p>
+
+<p>I suck at Tetris, and am probably going to end up weighting all the heuristics badly, or worse, creating heuristics that predict failure instead of success, or simply nothing useful at all. Here comes the interesting part. I've been doing some research on genetic algorithms, and believe that breeding an AI with effective weights for its heuristics is a good application of them. Effectively, a population of utility-based agents would begin with random weights in their utility functions, and through a fitness function assessing how long each agent survives games of Tetris, an effective agent with a good utility function would be bred.</p>
+
+<h2>
+<a id="user-content-domain-model" class="anchor" href="#domain-model" aria-hidden="true"><span class="octicon octicon-link"></span></a>Domain model</h2>
+
+<p>A chromosome is simply a set of heuristics and their weights. A genetic algorithms class will generate many random chromosomes to create an initial population, and simulate many games of Tetris by swapping new chromosomes into the AI. Using the final score as a "fitness function", the genetic algorithm can determine which chromosomes were the most successful and create new chromosomes based off those chromosomes. After many generations we should have a population of chromosomes that are very good at playing Tetris as that is what they've been bred for.
+<a href="domain_model.png" target="_blank"><img src="domain_model.png" alt="&lt;Domain Model&gt;" style="max-width:100%;"></a></p>
+
+<h2>
+<a id="user-content-heuristics" class="anchor" href="#heuristics" aria-hidden="true"><span class="octicon octicon-link"></span></a>Heuristics</h2>
+
+<p>I have defined six heuristics which will estimate the utility of a given Tetris board, which are described under <em>Definitions</em>. As these are easier to explain in a visual form, the more complex heuristics are also shown in an image format under <em>Diagram</em> and <em>Unit Tests</em>. How the heuristics are combined is up to the genetic algorithm.</p>
+
+<h4>
+<a id="user-content-definitions" class="anchor" href="#definitions" aria-hidden="true"><span class="octicon octicon-link"></span></a>Definitions</h4>
+
+<ul>
+<li>
+<strong>Number of blocks:</strong> The number of blocks on the board. A block is defined as any non-empty cell.</li>
+<li>
+<strong>Max height:</strong> Height of the highest block on the board.</li>
+<li>
+<strong>Average height:</strong> Average height of all of the blocks on the board.</li>
+<li>
+<strong>Number of holes:</strong> A hole is defined as an empty cell with a block above it. The block does not have to be in the cell directly above the hole for it to count.</li>
+<li>
+<strong>Number of blocks above holes:</strong> Number of blocks that are placed above holes. Like when defining holes, the block doesn't have be directly above the hole, so for example a stack of three blocks on top of a single hole will give a result of 3.</li>
+<li>
+<strong>Number of gaps:</strong> A gap is defined as an empty cell with a block directly to its left and right. This was added after testing showed many bots were building large towers with a single column in between, waiting for the magical I-beam piece. For the purposes of this heuristic, the edge of the board is considered to be a block.</li>
+</ul>
+
+<h4>
+<a id="user-content-diagram" class="anchor" href="#diagram" aria-hidden="true"><span class="octicon octicon-link"></span></a>Diagram</h4>
+
+<p><a href="heuristics.png" target="_blank"><img src="heuristics.png" alt="&lt;Heuristics&gt;" style="max-width:100%;"></a></p>
+
+<h4>
+<a id="user-content-unit-tests" class="anchor" href="#unit-tests" aria-hidden="true"><span class="octicon octicon-link"></span></a>Unit Tests</h4>
+
+<p>Another thing that might be useful to look at to understand the heuristics is their unit tests.</p>
+
+<p>Each of the below tests are conducted on the following board:<br>
+<a href="test_board.png" target="_blank"><img src="test_board.png" alt="&lt;Test Board&gt;" style="max-width:100%;"></a></p>
+
+<div class="highlight highlight-python"><pre><span class="pl-k">def</span> <span class="pl-en">test_num_holes</span>(<span class="pl-smi">self</span>):
+  <span class="pl-v">self</span>.assertEqual(num_holes(<span class="pl-v">self</span>.board), <span class="pl-c1">22</span>)
+
+<span class="pl-k">def</span> <span class="pl-en">test_num_blocks_above_holes</span>(<span class="pl-smi">self</span>):
+  <span class="pl-v">self</span>.assertEqual(num_blocks_above_holes(<span class="pl-v">self</span>.board), <span class="pl-c1">25</span>)
+
+<span class="pl-k">def</span> <span class="pl-en">test_num_gaps</span>(<span class="pl-smi">self</span>):
+  <span class="pl-v">self</span>.assertEqual(num_gaps(<span class="pl-v">self</span>.board), <span class="pl-c1">7</span>)
+
+<span class="pl-k">def</span> <span class="pl-en">test_max_height</span>(<span class="pl-smi">self</span>):
+  <span class="pl-v">self</span>.assertEqual(max_height(<span class="pl-v">self</span>.board), <span class="pl-c1">13</span>)
+
+<span class="pl-k">def</span> <span class="pl-en">test_avg_height</span>(<span class="pl-smi">self</span>):
+  total_height <span class="pl-k">=</span> ( <span class="pl-c1">13</span><span class="pl-k">*</span><span class="pl-c1">2</span> <span class="pl-k">+</span> <span class="pl-c1">12</span><span class="pl-k">*</span><span class="pl-c1">1</span> <span class="pl-k">+</span> <span class="pl-c1">11</span><span class="pl-k">*</span><span class="pl-c1">1</span> <span class="pl-k">+</span> <span class="pl-c1">10</span><span class="pl-k">*</span><span class="pl-c1">1</span> <span class="pl-k">+</span> <span class="pl-c1">9</span><span class="pl-k">*</span><span class="pl-c1">2</span> <span class="pl-k">+</span> <span class="pl-c1">8</span><span class="pl-k">*</span><span class="pl-c1">2</span> <span class="pl-k">+</span> <span class="pl-c1">7</span><span class="pl-k">*</span><span class="pl-c1">3</span> <span class="pl-k">+</span> <span class="pl-c1">6</span><span class="pl-k">*</span><span class="pl-c1">4</span> <span class="pl-k">+</span> <span class="pl-c1">5</span><span class="pl-k">*</span><span class="pl-c1">3</span> <span class="pl-k">+</span> <span class="pl-c1">4</span><span class="pl-k">*</span><span class="pl-c1">5</span> <span class="pl-k">+</span> <span class="pl-c1">3</span><span class="pl-k">*</span><span class="pl-c1">8</span> <span class="pl-k">+</span> <span class="pl-c1">2</span><span class="pl-k">*</span><span class="pl-c1">5</span> <span class="pl-k">+</span> <span class="pl-c1">1</span><span class="pl-k">*</span><span class="pl-c1">5</span> <span class="pl-k">+</span> <span class="pl-c1">0</span><span class="pl-k">*</span><span class="pl-c1">6</span> )
+  <span class="pl-v">self</span>.assertEqual(avg_height(<span class="pl-v">self</span>.board), total_height <span class="pl-k">/</span> num_blocks(<span class="pl-v">self</span>.board))
+
+<span class="pl-k">def</span> <span class="pl-en">test_num_blocks</span>(<span class="pl-smi">self</span>):
+  <span class="pl-v">self</span>.assertEqual(num_blocks(<span class="pl-v">self</span>.board), <span class="pl-c1">48</span>)</pre></div>
+
+<p>You can run the unit tests using the following command:</p>
+
+<div class="highlight highlight-lua"><pre><span class="pl-k">&gt;&gt;&gt;</span> python <span class="pl-k">-</span>m unittest <span class="pl-k">-</span>v heuristic_tests.<span class="pl-smi">py</span>
+<span class="pl-c1">test_avg_height</span> (heuristic_tests.<span class="pl-smi">TestHeuristics</span>) <span class="pl-c1">...</span> ok
+<span class="pl-c1">test_max_height</span> (heuristic_tests.<span class="pl-smi">TestHeuristics</span>) <span class="pl-c1">...</span> ok
+<span class="pl-c1">test_num_blocks</span> (heuristic_tests.<span class="pl-smi">TestHeuristics</span>) <span class="pl-c1">...</span> ok
+<span class="pl-c1">test_num_blocks_above_holes</span> (heuristic_tests.<span class="pl-smi">TestHeuristics</span>) <span class="pl-c1">...</span> ok
+<span class="pl-c1">test_num_gaps</span> (heuristic_tests.<span class="pl-smi">TestHeuristics</span>) <span class="pl-c1">...</span> ok
+<span class="pl-c1">test_num_holes</span> (heuristic_tests.<span class="pl-smi">TestHeuristics</span>) <span class="pl-c1">...</span> ok
+
+<span class="pl-c">----------------------------------------------------------------------</span>
+Ran <span class="pl-c1">6</span> tests <span class="pl-k">in</span> <span class="pl-c1">0.001</span>s
+
+OK</pre></div>
+
+<h2>
+<a id="user-content-genetic-algorithms" class="anchor" href="#genetic-algorithms" aria-hidden="true"><span class="octicon octicon-link"></span></a>Genetic Algorithms</h2>
+
+<p>The genetic algorithms decide how important each heuristic is, and whether each measures a positive or negative aspect of the board. The way the heuristics are defined, it would seem that all the heuristics measure negative aspects of the board, or ones where a higher value indicates a worse board. This was the intention, although the most successful chromosomes do not weight them this way. There is no reason to believe that the result a genetic algorithm will evolve will think about the problem in a similar way to how a human would.</p>
+
+<h4>
+<a id="user-content-chromosomes" class="anchor" href="#chromosomes" aria-hidden="true"><span class="octicon octicon-link"></span></a>Chromosomes</h4>
+
+<p>Each "chromosome" is a dictionary of heuristics and their weights.</p>
+
+<div class="highlight highlight-python"><pre>{
+  heuristic.num_holes: <span class="pl-k">-</span><span class="pl-c1">496</span>,
+  heuristic.num_blocks_above_holes: <span class="pl-c1">897</span>,
+  heuristic.num_gaps: <span class="pl-k">-</span><span class="pl-c1">19</span>,
+  heuristic.max_height: <span class="pl-k">-</span><span class="pl-c1">910</span>,
+  heuristic.avg_height: <span class="pl-k">-</span><span class="pl-c1">747</span>,
+  heuristic.num_blocks: <span class="pl-c1">174</span>,
+}</pre></div>
+
+<p>The AI multiplies each of its heuristics by their respective weight to come up with a utility value. As the chromosome defines these weights, it dictates how the AI plays.</p>
+
+<div class="highlight highlight-python"><pre><span class="pl-k">def</span> <span class="pl-en">utility</span>(<span class="pl-smi">self</span>, <span class="pl-smi">board</span>):
+  <span class="pl-k">return</span> <span class="pl-c1">sum</span>([fun(board)<span class="pl-k">*</span>weight <span class="pl-k">for</span> (fun, weight) <span class="pl-k">in</span> <span class="pl-v">self</span>.heuristics.items()])</pre></div>
+
+<h4>
+<a id="user-content-algorithm" class="anchor" href="#algorithm" aria-hidden="true"><span class="octicon octicon-link"></span></a>Algorithm</h4>
+
+<p>The genetic algorithm starts by creating a population of random chromosomes. </p>
+
+<div class="highlight highlight-python"><pre><span class="pl-k">def</span> <span class="pl-en"><span class="pl-c1">__init__</span></span>(<span class="pl-smi">self</span>):
+  <span class="pl-v">self</span>.population <span class="pl-k">=</span> [<span class="pl-v">self</span>.random_chromosome() <span class="pl-k">for</span> _ <span class="pl-k">in</span> <span class="pl-c1">range</span>(POPULATION_SIZE)]
+
+<span class="pl-k">def</span> <span class="pl-en">random_chromosome</span>(<span class="pl-smi">self</span>):
+  <span class="pl-k">return</span> Chromosome({fun: randrange(<span class="pl-k">-</span><span class="pl-c1">1000</span>, <span class="pl-c1">1000</span>) <span class="pl-k">for</span> fun, weight <span class="pl-k">in</span> <span class="pl-v">self</span>.ai.heuristics.items()})</pre></div>
+
+<p>The size of the population heavily influences the performance of the program. Populations that are too small won't cover as much of the search space, and are more likely to get stuck in local minimums. It is important to tune the population size per problem because having a population that is too big is of no benefit, and greatly increases the training time the program requires. </p>
+
+<p>How much each chromosome can influence the direction of the search is based on how long they survive, and how many offspring they produce. How likely each chromosome is to survive and breed is based on their fitness. Luckily, Tetris is an example of a problem where the fitness function is trivial to implement. In this case, I've decided to make the fitness of a chromosome the average score it achieves in a Tetris game. I'm using the average score because my testing has shown that there is a lot of luck involved in Tetris; luck is not hereditary, and is therefore useless to a genetic algorithm.</p>
+
+<h4>
+<a id="user-content-selection" class="anchor" href="#selection" aria-hidden="true"><span class="octicon octicon-link"></span></a>Selection</h4>
+
+<p>Selection is the process that decides which chromosomes live and die. Currently the program will always allow <code>SURVIVORS_PER_GENERATION</code> chromosomes to make it to the next generation. How these chromosomes are chosen depends on the selection method. Some common selection methods from most likely to keep high performing chromosomes to most likely to consider alternative solutions and break out of local maximums are:</p>
+
+<ul>
+<li>Elitism: Select most fit chromosomes.</li>
+<li>Roulette wheel: Select chromosomes randomly in proportion to fitness.</li>
+<li>Rank selection: Rank chromosomes by fitness, select randomly in proportion to rank.</li>
+</ul>
+
+<p>Currently only roulette wheel selection is implemented.</p>
+
+<div class="highlight highlight-python"><pre><span class="pl-k">def</span> <span class="pl-en">selection</span>(<span class="pl-smi">self</span>, <span class="pl-smi">num_selected</span>, <span class="pl-smi">method</span>):
+  <span class="pl-k">def</span> <span class="pl-en">roulette</span>(<span class="pl-smi">population</span>):
+    total_fitness <span class="pl-k">=</span> <span class="pl-c1">sum</span>([c.avg_fitness() <span class="pl-k">for</span> c <span class="pl-k">in</span> population])
+    winner <span class="pl-k">=</span> randrange(<span class="pl-c1">int</span>(total_fitness))
+    fitness_so_far <span class="pl-k">=</span> <span class="pl-c1">0</span>
+    <span class="pl-k">for</span> chromosome <span class="pl-k">in</span> population:
+      fitness_so_far <span class="pl-k">+=</span> chromosome.avg_fitness()
+      <span class="pl-k">if</span> fitness_so_far <span class="pl-k">&gt;</span> winner:
+        <span class="pl-k">return</span> chromosome
+
+  <span class="pl-k">if</span> method <span class="pl-k">==</span> SelectionMethod.roulette:
+    survivors <span class="pl-k">=</span> []
+    <span class="pl-k">for</span> _ <span class="pl-k">in</span> <span class="pl-c1">range</span>(num_selected):
+      survivors.append(roulette([c <span class="pl-k">for</span> c <span class="pl-k">in</span> <span class="pl-v">self</span>.population <span class="pl-k">if</span> c <span class="pl-k">not</span> <span class="pl-k">in</span> survivors]))
+    <span class="pl-k">return</span> survivors
+
+  <span class="pl-k">raise</span> <span class="pl-c1">ValueError</span>(<span class="pl-s"><span class="pl-pds">'</span>SelectionMethod <span class="pl-c1">%s</span> not implemented<span class="pl-pds">'</span></span> <span class="pl-k">%</span> method)</pre></div>
+
+<h4>
+<a id="user-content-crossover" class="anchor" href="#crossover" aria-hidden="true"><span class="octicon octicon-link"></span></a>Crossover</h4>
+
+<p>Crossover is the process where new chromosomes inherit traits from their parent chromosomes. This program will always create <code>NEWBORNS_PER_GENERATION</code> chromosomes each generation, but in general the crossover probability is discussed, which is effectively <code>NEWBORNS / POPULATION_SIZE</code>. A higher crossover probability reduces the likelihood of maintaining good chromosomes, while a lower value makes improvement slow. </p>
+
+<p>This program currently defines two crossover methods:</p>
+
+<ul>
+<li>Random attributes: Randomly take all required attributes from either parent.</li>
+<li>Average attributes: Average each of the attributes of each parent.</li>
+</ul>
+
+<div class="highlight highlight-python"><pre><span class="pl-k">def</span> <span class="pl-en">crossover</span>(<span class="pl-smi">self</span>, <span class="pl-smi">c1</span>, <span class="pl-smi">c2</span>, <span class="pl-smi">method</span>):
+  <span class="pl-k">def</span> <span class="pl-en">random_attributes</span>():
+    heuristics <span class="pl-k">=</span> {}
+    <span class="pl-k">for</span> fun, _ <span class="pl-k">in</span> c1.heuristics.items():
+      heuristics[fun] <span class="pl-k">=</span> random.choice((c1, c2)).heuristics[fun]
+    <span class="pl-k">return</span> Chromosome(heuristics)
+
+  <span class="pl-k">def</span> <span class="pl-en">average_attributes</span>():
+    heuristics <span class="pl-k">=</span> {}
+    <span class="pl-k">for</span> fun, _ <span class="pl-k">in</span> c1.heuristics.items():
+      heuristics[fun] <span class="pl-k">=</span> (c1.heuristics[fun] <span class="pl-k">+</span> c2.heuristics[fun]) <span class="pl-k">/</span> <span class="pl-c1">2</span>
+    <span class="pl-k">return</span> Chromosome(heuristics)     
+
+  <span class="pl-k">if</span> method <span class="pl-k">==</span> CrossoverMethod.random_attributes:
+    <span class="pl-k">return</span> random_attributes()
+  <span class="pl-k">if</span> method <span class="pl-k">==</span> CrossoverMethod.average_attributes:
+    <span class="pl-k">return</span> average_attributes()
+  <span class="pl-k">raise</span> <span class="pl-c1">ValueError</span>(<span class="pl-s"><span class="pl-pds">'</span>CrossoverMethod <span class="pl-c1">%s</span> not implemented<span class="pl-pds">'</span></span> <span class="pl-k">%</span> method)</pre></div>
+
+<h4>
+<a id="user-content-mutation" class="anchor" href="#mutation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Mutation</h4>
+
+<p>Mutation is a glitch that results in different values being assigned to a chromosome than the crossover algorithm would usually define. This program defines mutation fairly typically, there is a mutation probability that defines how often parts of a chromosome will be mutated. When mutation occurs, a random value is assigned to an attribute instead of the value defined by the crossover algorithm. </p>
+
+<p>Mutation is necessary to avoid having the population all converge on one result and become homogeneous, as crossover makes all the chromosomes more similar each generation. Higher mutation probabilities can result in poor improvement as search becomes more random, whereas lower values can result in falling into local maximums too easily or producing the aforementioned convergence problem.</p>
+
+<div class="highlight highlight-python"><pre><span class="pl-k">def</span> <span class="pl-en">mutation</span>(<span class="pl-smi">self</span>, <span class="pl-smi">chromosome</span>, <span class="pl-smi">mutation_rate</span>):
+  <span class="pl-k">if</span> randint(<span class="pl-c1">0</span>, <span class="pl-c1">int</span>(mutation_rate)) <span class="pl-k">==</span> <span class="pl-c1">0</span>:
+    h <span class="pl-k">=</span> chromosome.heuristics
+    h[random.choice(<span class="pl-c1">list</span>(h.keys()))] <span class="pl-k">=</span> randrange(<span class="pl-k">-</span><span class="pl-c1">1000</span>, <span class="pl-c1">1000</span>)</pre></div>
+
+<h4>
+<a id="user-content-combining-selection-crossover-and-mutation" class="anchor" href="#combining-selection-crossover-and-mutation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Combining Selection, Crossover and Mutation</h4>
+
+<p>Now that we can randomly generate chromosomes to create the initial population, and we have algorithms for selection based on fitness and crossover to create a child that inherits traits from its parents, we have all of the conditions required for evolution to occur. The mutation algorithm isn't strictly required for evolution, but significantly improves the performance of the population by avoiding early convergence or fixation on local maximums. The following code is a simplified version of what's contained in the actual program; it aims to communicate how we can combine all of the algorithms to produce the next generation of a given population.</p>
+
+<div class="highlight highlight-python"><pre><span class="pl-k">def</span> <span class="pl-en">next_generation</span>(<span class="pl-smi">self</span>):
+  survivors <span class="pl-k">=</span> <span class="pl-v">self</span>.selection(SURVIVORS_PER_GENERATION, SELECTION_METHOD)
+
+  children <span class="pl-k">=</span> []
+  <span class="pl-k">for</span> _ <span class="pl-k">in</span> <span class="pl-c1">range</span>(NEWBORNS_PER_GENERATION):
+    parents <span class="pl-k">=</span> <span class="pl-v">self</span>.selection(<span class="pl-c1">2</span>, SELECTION_METHOD)
+    children.append(<span class="pl-v">self</span>.crossover(parents[<span class="pl-c1">0</span>], parents[<span class="pl-c1">1</span>], CROSSOVER_METHOD))
+
+  new_population <span class="pl-k">=</span> survivors <span class="pl-k">+</span> children
+
+  <span class="pl-k">for</span> _ <span class="pl-k">in</span> <span class="pl-c1">range</span>(MUTATION_PASSES):
+    <span class="pl-k">for</span> chromosome <span class="pl-k">in</span> new_population:
+      <span class="pl-v">self</span>.mutation(chromosome, MUTATION_RATE <span class="pl-k">/</span> MUTATION_PASSES)
+
+  <span class="pl-k">assert</span> <span class="pl-c1">len</span>(new_population) <span class="pl-k">==</span> <span class="pl-c1">len</span>(<span class="pl-v">self</span>.population)
+  <span class="pl-v">self</span>.population <span class="pl-k">=</span> new_population</pre></div>
+
+<p>Now all we have to do is make each chromosome play <code>GAMES_TO_AVG</code> games of tetris to evaluate their fitness each generation.</p>
+
+<div class="highlight highlight-python"><pre><span class="pl-k">def</span> <span class="pl-en">on_game_over</span>(<span class="pl-smi">self</span>, <span class="pl-smi">score</span>):
+  chromosome <span class="pl-k">=</span> <span class="pl-v">self</span>.population[<span class="pl-v">self</span>.current_chromosome]
+  chromosome.games <span class="pl-k">+=</span> <span class="pl-c1">1</span>
+  chromosome.total_fitness <span class="pl-k">+=</span> score
+  <span class="pl-k">if</span> chromosome.games <span class="pl-k">%</span> GAMES_TO_AVG <span class="pl-k">==</span> <span class="pl-c1">0</span>:
+    <span class="pl-v">self</span>.next_ai()
+  <span class="pl-v">self</span>.app.start_game()
+
+<span class="pl-k">def</span> <span class="pl-en">next_ai</span>(<span class="pl-smi">self</span>):
+  <span class="pl-v">self</span>.current_chromosome <span class="pl-k">+=</span> <span class="pl-c1">1</span>
+  <span class="pl-k">if</span> <span class="pl-v">self</span>.current_chromosome <span class="pl-k">&gt;=</span> POPULATION_SIZE:
+    <span class="pl-v">self</span>.current_chromosome <span class="pl-k">=</span> <span class="pl-c1">0</span>
+    <span class="pl-v">self</span>.next_generation()
+  <span class="pl-v">self</span>.ai.heuristics <span class="pl-k">=</span> <span class="pl-v">self</span>.population[<span class="pl-v">self</span>.current_chromosome].heuristics</pre></div>
+
+<h2>
+<a id="user-content-conclusion" class="anchor" href="#conclusion" aria-hidden="true"><span class="octicon octicon-link"></span></a>Conclusion</h2>
+
+<p>The genetic algorithm improved significantly over my hand-tuned heuristic weights. Never being satisfied, I expected to get better results by tweaking the parameters as well as methods of selection and crossover of the genetic algorithms, but I couldn't achieve anything significantly better than the initial results. </p>
+
+<p>Perhaps it is worth looking into another stochastic optimisation algorithm, such as simulated annealing, hill climbing with restarts or Tabu search.</p>
+</article></body></html>
